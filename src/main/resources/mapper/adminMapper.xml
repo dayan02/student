@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="AdminNS">
+   
+  
+   <!-- 实现登录查询操作 -->
+   <select id="findLogin" parameterType="Admin" resultType="Admin">
+   select email,lastdate from admin where email = #{email} and password = #{password}
+   </select>
+   
+   <!-- 实现更新最后一次登录日期 -->
+   <update id="doUpdateLastDate" parameterType="Admin">
+   UPDATE admin SET lastdate=#{lastdate} WHERE email=#{email}
+   </update>
+</mapper>
