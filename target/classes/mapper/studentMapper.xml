@@ -30,5 +30,12 @@ insert into student(sid,name,age,sex,address,cid) values (#{sid},#{name},#{age},
   select count(*) from student
   
   </select>
+  
+  <!-- 更新学生信息 -->
+  <update id="doUpdate" parameterType="Student" >
+  update student set name=#{name},age=#{age},sex=#{sex},cid=#{classes.cid},address=#{address} where sid=#{sid}
+  </update>
+  
+  
 </mapper>
 

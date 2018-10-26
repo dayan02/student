@@ -32,6 +32,11 @@ public class StudentServiceImpl implements IStudentService{
 	        return map;
 	}
 
+	@Override
+	public boolean update(Student vo) throws Exception {
+		return this.studentDao.doUpdate(vo);
+	}
+
 	
 
 }

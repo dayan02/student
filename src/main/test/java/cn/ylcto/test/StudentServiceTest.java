@@ -24,12 +24,14 @@ public class StudentServiceTest {
 	}
 
 	@Test
-	public void test() throws Exception {
+	public void testInsert() throws Exception {
 		Student vo = new Student();
 		Classes classes = new Classes();
 		classes.setCid(3);
 		vo.setSid("s003");
 		vo.setName("学生三");
+		vo.setSex(0);
+		vo.setAddress("河南省焦作市");
 		vo.setAge(25);
 		vo.setAddress("河南省焦作市");
 		vo.setSex(0);
@@ -47,5 +49,17 @@ public class StudentServiceTest {
 		TestCase.assertTrue(map.size()==2);
 	} 
 	
-	
+	@Test
+	public void testUpdate() throws Exception {
+		Student vo = new Student();
+		vo.setSid("2");
+		vo.setName("大燕");
+		vo.setAge(11);
+		vo.setAddress("河南省焦作市");
+		vo.setSex(0);
+		Classes classes = new Classes();
+		classes.setCid(10);
+		vo.setClasses(classes);
+		this.studentService.update(vo);
+	}
 }

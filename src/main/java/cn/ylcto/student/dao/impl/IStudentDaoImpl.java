@@ -30,8 +30,8 @@ public class IStudentDaoImpl extends SqlSessionDaoSupport implements IStudentDao
 	}
 
 	public boolean doUpdate(Student vo) throws SQLException {
-		// TODO Auto-generated method stub
-		return false;
+
+		return super.getSqlSession().update("StudentNs.doUpdate", vo)>0;
 	}
 
 	public boolean doRemove(Set<?> ids) throws SQLException {

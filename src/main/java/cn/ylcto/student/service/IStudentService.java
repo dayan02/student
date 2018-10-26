@@ -13,6 +13,24 @@ public interface IStudentService {
 	 */
 	public boolean insert(Student vo) throws Exception;
 	
+	
+	 /**
+     * 实现数据分页查询操作
+     * @param currentPage 表示当前页
+     * @param lineSize 表示每页显示记录数
+     * @return
+     * @throws Exception
+     */
 	public Map<String,Object> listSpilt(int currentPage,int lineSize)  throws Exception;
+	
+	
+	/**
+	 * @param vo传入需要验证的数据
+	 * @return返回布尔值，成功true，失败false
+	 * @throws Exception
+	 */
+	public boolean update(Student vo)throws Exception ;
+	
+	
 	
 }

@@ -3,8 +3,8 @@ $(function () {
 })
 function loadData() {   // 定义数据读取的操作函数
     $.post("pages/back/student/student_list.action", {"cp": jsCommonCp, "ls": jsCommonLs}, function (obj) {
-        
-    	/*alert("Nihao");*/
+    	/* 
+    	alert("nihao");*/
     	
     	for(var x=0;x<=obj.allStudent.length;x++ ){
     	

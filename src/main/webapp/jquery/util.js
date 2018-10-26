@@ -1,5 +1,5 @@
 var jsCommonCp = 1;        // 当前所在页
-var jsCommonLs = 3;        // 每页显示的数据个数
+var jsCommonLs = 2;        // 每页显示的数据个数
 var jsCommonPageSize;      // 总页数
 function createSplitBar(allRecorders) {    // 专门用于创建分页的操作
     clearBar();    // 清空全部的内容
@@ -36,10 +36,21 @@ function createSplitBar(allRecorders) {    // 专门用于创建分页的操作
         nextPage() ;
     }
 }
-function addDetailPage() {
-    var liObj = $("<li><span>...</span></li>") ;
-    $("#pagecontrol").append(liObj) ;
+
+
+
+function clearBar() {   // 清空已有的内容
+    $("#pagecontrol li").remove();
 }
+
+function calcPageSize(allRecorders) {   // 计算总页数
+    if (allRecorders == 0) {    // 没有数据
+        jsCommonPageSize = 1;  // 就在第1页上显示
+    } else {    // 避免小数点问题
+        jsCommonPageSize = parseInt((allRecorders + jsCommonLs - 1) / jsCommonLs);
+    }
+}
+
 function previousPage() {   // 上一页按钮
     var liObj = $("<li></li>");    // 定义li元素
     var aObj = $("<a style='cursor:pointer;'>上一页</a>");
@@ -72,9 +83,12 @@ function nextPage() {   // 下一页按钮
     liObj.append(aObj) ;
     $("#pagecontrol").append(liObj) ;
 }
-function clearBar() {   // 清空已有的内容
-    $("#pagecontrol li").remove();
+
+function addDetailPage() {
+    var liObj = $("<li><span>...</span></li>") ;
+    $("#pagecontrol").append(liObj) ;
 }
+
 function addBar(index) { // 专门生成分页控制代码
     var liObj = $("<li></li>");    // 定义li元素
     var aObj = $("<a style='cursor:pointer;'>" + index + "</a>");
@@ -88,47 +102,4 @@ function addBar(index) { // 专门生成分页控制代码
     }
     liObj.append(aObj) ;
     $("#pagecontrol").append(liObj) ;
-}
-function calcPageSize(allRecorders) {   // 计算总页数
-    if (allRecorders == 0) {    // 没有数据
-        jsCommonPageSize = 1;  // 就在第1页上显示
-    } else {    // 避免小数点问题
-        jsCommonPageSize = parseInt((allRecorders + jsCommonLs - 1) / jsCommonLs);
-    }
-}
-// 表示实现全选功能
-function setSelectAll(eleA,eleB) {
-    eleA.on("click",function () {
-        eleB.each(function () {
-            this.checked = eleA.prop("checked");
-        })
-    })
-}
-// 实现批量删除操作
-function  setDelete(btn,ele,url) {
-    btn.on("click",function () {
-        var data = "";
-        ele.each(function () {
-            if(this.checked){
-                data += this.value + "|";
-            }
-        });
-        if (data == ""){
-            alert("请选择数据后操作！")
-        }else{
-            $.post(url,{"ids":data},function(obj){
-                if(obj.trim() == "true"){
-                    $("#alertDiv").attr("class","alert alert-success");
-                    $("#alertText").text("学生信息删除成功!");
-                    loadData(); // 重新加载数据
-                }else{
-                    $("#alertDiv").attr("class","alert alert-danger");
-                    $("#alertText").text("学生信息删除失败!");
-                }
-                $("#alertDiv").fadeIn(2000,function () {
-                    $("#alertDiv").fadeOut(2000);
-                });
-            },"text");
-        }
-    })
 }
