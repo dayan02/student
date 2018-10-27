@@ -28,6 +28,16 @@ public abstract class DefaultAction {
 
 	private Integer lineSize = 2; //每页记录数
 	
+	
+	public void print(HttpServletResponse response,Object msg) {
+		try {
+			response.getWriter().print(msg);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	public void handleList(HttpServletRequest request ,HttpServletResponse response){
 		try {
 			this.currentPage  = Integer.parseInt(request.getParameter("cp"));

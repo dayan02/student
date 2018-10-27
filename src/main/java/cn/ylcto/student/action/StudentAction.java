@@ -7,6 +7,7 @@ import cn.ylcto.student.service.IStudentService;
 import cn.ylcto.student.vo.Student;
 import cn.ylcto.util.action.DefaultAction;
 
+import org.aspectj.weaver.patterns.ThisOrTargetAnnotationPointcut;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -51,6 +52,15 @@ public class StudentAction extends DefaultAction {
 	
 }
     
+    @RequestMapping(value="student_update")
+    public void update(HttpServletResponse response,Student vo) {
+		try {
+			super.print(response, this.studentService.update(vo));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
     
 	@Override
 	public String getTest() {
