@@ -51,11 +51,6 @@ public class StudentAction extends DefaultAction {
 	
 }
     
-    public void name() {
-		
-	}
-    
-    
     
 	@Override
 	public String getTest() {

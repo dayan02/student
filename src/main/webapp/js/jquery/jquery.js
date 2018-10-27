@@ -3815,7 +3815,6 @@ jQuery.fn.ready = function( fn ) {
 
 	return this;
 };
-
 jQuery.extend( {
 
 	// Is the DOM ready to be used? Set to true once it occurs.

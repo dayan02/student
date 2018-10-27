@@ -3,39 +3,45 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="StudentNs">
 
-<resultMap type="Student" id="studentResultMap">
-<id property="sid" column="sid"/>
-<result property="name" column="name"/>
-<result property="age" column="age"/>
-<result property="sex" column="sex"/>
-<result property="address" column="address"/>
-<association property="classes" column="cid" javaType="Classes" resultMap="ClassesNS.classesResultMap"></association>
-</resultMap>
+	<resultMap type="Student" id="studentResultMap">
+		<id property="sid" column="sid" />
+		<result property="name" column="name" />
+		<result property="age" column="age" />
+		<result property="sex" column="sex" />
+		<result property="address" column="address" />
+		<association property="classes" column="cid" javaType="Classes"
+			resultMap="ClassesNS.classesResultMap"></association>
+	</resultMap>
 
 
 
-<insert id="doCreate" parameterType="Student">
+	<insert id="doCreate" parameterType="Student">
 
-insert into student(sid,name,age,sex,address,cid) values (#{sid},#{name},#{age},#{sex},#{address},#{classes.cid});
-</insert>
+		insert into student(sid,name,age,sex,address,cid) values
+		(#{sid},#{name},#{age},#{sex},#{address},#{classes.cid});
+	</insert>
 
 
-<!-- 实现分页操作 -->
- <select id="findBySpilt" parameterType="java.util.Map" resultMap="studentResultMap">
- select sid,name,age,sex,address from student limit #{start},#{lineSize}
- </select> 
-  
-  <!-- 统计全部数据 -->
-  <select id="getAllCount" parameterType="java.util.Map" resultType="Integer">
-  select count(*) from student
-  
-  </select>
-  
-  <!-- 更新学生信息 -->
-  <update id="doUpdate" parameterType="Student" >
-  update student set name=#{name},age=#{age},sex=#{sex},cid=#{classes.cid},address=#{address} where sid=#{sid}
-  </update>
-  
-  
+	<!-- 实现分页操作 -->
+	<select id="findBySpilt" parameterType="java.util.Map"
+		resultMap="studentResultMap">
+		select sid,name,age,sex,address from student limit #{start},#{lineSize}
+	</select>
+
+	<!-- 统计全部数据 -->
+	<select id="getAllCount" parameterType="java.util.Map"
+		resultType="Integer">
+		select count(*) from student
+
+	</select>
+
+	<!-- 更新学生信息 -->
+	<update id="doUpdate" parameterType="Student">
+		update student set
+		name=#{name},age=#{age},sex=#{sex},cid=#{classes.cid},address=#{address}
+		where sid=#{sid}
+	</update>
+
+
 </mapper>
 

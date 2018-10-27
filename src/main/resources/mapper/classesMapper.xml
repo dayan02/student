@@ -2,27 +2,28 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ClassesNS">
-   
-   <resultMap type="classes" id="classesResultMap">
-   <id property="cid" column="cid"/>
-   <result property="cname" column="cname"/>
-   <result property="note" column="note"/>
-   <!-- 配置一对多关系 -->
-   <collection property="students" column="sid" javaType="java.util.List" ofType="Student"></collection>
-   </resultMap>
-   
-   <!-- 实现数据增加 -->
-   <insert id="doCreate" parameterType="Classes">
-   insert into classes(cname,note) values(#{cname},#{note})
-   </insert>
-   
-   <!-- 根据cname查找班级是否存在 -->
-   <select id="findByCname" parameterType="String" resultMap="classesResultMap">
-   select * from classes where cname=#{cname}
-   </select>
-   
-   <!-- 实现全部班级查询 -->
-   <select id="findAll" parameterType="java.util.List" resultMap="classesResultMap">
-   select * from classes 
-   </select>
+
+	<resultMap type="classes" id="classesResultMap">
+		<id property="cid" column="cid" />
+		<result property="cname" column="cname" />
+		<result property="note" column="note" />
+		<!-- 配置一对多关系 -->
+		<collection property="students" column="sid" javaType="java.util.List"
+			ofType="Student"></collection>
+	</resultMap>
+
+	<!-- 实现数据增加 -->
+	<insert id="doCreate" parameterType="Classes">
+		insert into classes(cname,note) values(#{cname},#{note})
+	</insert>
+
+	<!-- 根据cname查找班级是否存在 -->
+	<select id="findByCname" parameterType="String" resultMap="classesResultMap">
+		select * from classes where cname=#{cname}
+	</select>
+
+	<!-- 实现全部班级查询 -->
+	<select id="findAll" parameterType="java.util.List" resultMap="classesResultMap">
+		select * from classes
+	</select>
 </mapper>

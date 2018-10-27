@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%
     String path = request.getContextPath();
@@ -14,15 +14,14 @@
 <base href="<%=basePath%>">
 </head>
 <body>
-<jsp:include page="/pages/header.jsp"/>
+	<jsp:include page="/pages/header.jsp" />
 
-<!-- 主体内容编写 -->
+	<!-- 主体内容编写 -->
 	<div id="page-wrapper">
 
 		<div class="col-md-12">
 			<h2 class="h2" style="text-align: center">增加班级</h2>
-			<br>
-			<br>
+			<br> <br>
 		</div>
 
 		<form action="<%=basePath%>pages/back/classes/classes_insert.action"
@@ -43,18 +42,18 @@
 				</div>
 			</div>
 			<div class="form-group">
-			<div class="col-md-4 col-md-offset-5">
-				<button type="submit" class="btn btn-success btn-sm">增加</button>
-				<button type="reset" class="btn btn-danger btn-sm">重置</button>
-			</div>
+				<div class="col-md-4 col-md-offset-5">
+					<button type="submit" class="btn btn-success btn-sm">增加</button>
+					<button type="reset" class="btn btn-danger btn-sm">重置</button>
+				</div>
 			</div>
 		</form>
 	</div>
-	<jsp:include page="/pages/footer.jsp"/>
+	<jsp:include page="/pages/footer.jsp" />
 	<script src="jquery/jquery.validate.min.js"></script>
-     <script src="jquery/additional-method.min.js"></script>
-     <script src="jquery/jquery.metadata.js"></script>
-     <script src="jquery/Message_zh_CN.js"></script>
-     <script src="jquery/classes_insert.js"></script>
+	<script src="jquery/additional-method.min.js"></script>
+	<script src="jquery/jquery.metadata.js"></script>
+	<script src="jquery/Message_zh_CN.js"></script>
+	<script src="jquery/classes_insert.js"></script>
 </body>
 </html>
