@@ -73,4 +73,10 @@ public class IStudentDaoImpl extends SqlSessionDaoSupport implements IStudentDao
 		return super.getSqlSession().selectOne("StudentNs.getAllCount");
 	}
 
+	@Override
+	public boolean doRemoverBatch(List<String> ids) throws SQLException {
+
+		return super.getSqlSession().delete("StudentNs.doRemove", ids)>0;
+	}
+
 }

@@ -1,4 +1,6 @@
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import junit.framework.TestCase;
@@ -62,4 +64,12 @@ public class StudentServiceTest {
 		vo.setClasses(classes);
 		this.studentService.update(vo);
 	}
+	
+	@Test
+	public void testDelete() throws Exception{
+		List<String> all = new ArrayList<>();
+		all.add("2");
+		this.studentService.delete(all);
+	}
+	
 }

@@ -1,5 +1,6 @@
 package cn.ylcto.student.action;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -61,6 +62,31 @@ public class StudentAction extends DefaultAction {
 			e.printStackTrace();
 		}
 	}
+    
+    
+    @RequestMapping(value="student_delete")
+    public void delete(HttpServletRequest request,HttpServletResponse response) {
+		
+    	try {
+    		String[] result  = request.getParameter("ids").split("\\|");
+		List<String> all = new ArrayList<>();
+		for (int i = 0; i < result.length; i++) {
+			all.add(result[i]);
+		}
+		if(all.size()>0){
+			
+				super.print(response, this.studentService.delete(all));
+				}
+				else{
+					super.print(response, "failure"); // 删除数据不成功返回false
+				}
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+
     
 	@Override
 	public String getTest() {

@@ -42,6 +42,19 @@
 		where sid=#{sid}
 	</update>
 
+<!-- 删除学生数据 -->
+<delete id="doRemove" parameterType="java.util.List">
+
+delete from student
+<where>
+sid in
+<foreach collection="list" item="ele" open="(" close=")" separator=",">
+'$(ele)'
+</foreach>
+</where>
+
+</delete>
+
 
 </mapper>
 

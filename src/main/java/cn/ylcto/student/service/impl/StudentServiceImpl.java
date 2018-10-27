@@ -2,6 +2,7 @@ package cn.ylcto.student.service.impl;
 
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -35,6 +36,12 @@ public class StudentServiceImpl implements IStudentService{
 	@Override
 	public boolean update(Student vo) throws Exception {
 		return this.studentDao.doUpdate(vo);
+	}
+
+	@Override
+	public boolean delete(List<String> ids) throws Exception {
+		System.out.println(ids);
+		return this.studentDao.doRemoverBatch(ids);
 	}
 
 	

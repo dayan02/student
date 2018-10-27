@@ -24,5 +24,13 @@ public interface IStudentDao extends IDAO<String, Student>{
      * @throws SQLException
      */
     public Integer getAllCount()throws SQLException;
+    
+    /**
+     * 实现数据批量删除操作
+     * @param ids 表示要执行删除操作的集合数据
+     * @return
+     * @throws SQLException
+     */
+    public boolean doRemoverBatch(List<String> ids) throws SQLException;
 
 }
