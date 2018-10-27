@@ -9,11 +9,36 @@ $(function () {
             var age = $("#age").val();
             var address = $("#address").val();
             var sex = $("#sex").val();
+            if (sex == "男"){
+                sex = 1;
+            }else{
+                sex = 0;
+            }
         	var cid = $("#classes").val();
-
-        	$.post("/pages/back/student/student_update.action", {"sid":sid,"name":name,"age":age,"address":address,"sex":sex,"classes.cid":cid},function(obj){
-        		
-        	},"text");
+alert(sid+","+name+","+age+""+address+","+sex+","+cid)
+        	$.post("pages/back/student/student_update.action", {"sid":sid,"name":name,"age":age,"address":address,"sex":sex,"classes.cid":cid},function(obj){
+        		if(obj.trim() == "true"){
+                    $("#alertDiv").attr("class","alert alert-success");
+                    $("#alertText").text("学生信息修改成功!");
+                    $("#sid-"+sid).text(sid);
+                    $("#name-"+sid).text(name);
+                    $("#age-"+sid).text(age);
+                    if (sex == "男"){
+                        sex = 1;
+                    }else{
+                        sex = 0;
+                    }
+                    $("#sex-"+sid).text(sex);
+                    $("#address-"+sid).text(address);
+                }else{
+                    $("#alertDiv").attr("class","alert alert-danger");
+                    $("#alertText").text("学生信息修改失败!");
+                }
+                $("#studentInfo").modal("hide");
+                $("#alertDiv").fadeIn(2000,function () {
+                    $("#alertDiv").fadeOut(2000);
+                });
+            },"text");
         } ,  
         rules : {   // 为每一个表单编写验证规则
             

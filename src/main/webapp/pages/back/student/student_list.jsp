@@ -30,7 +30,10 @@
         <div class="text-right">
             <ul class="pagination pagination-sm" id="pagecontrol"></ul>
         </div>
-       
+        <div class="alert alert-success" id="alertDiv" style="display: none">
+            <button class="close" data-dismiss="alert">&times;</button>
+            <span id="alertText"></span>
+        </div>
     </div>
 
     <div class="modal" id="studentInfo">
