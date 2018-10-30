@@ -3,6 +3,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Resource;
+
 import junit.framework.TestCase;
 
 import org.junit.BeforeClass;
@@ -16,6 +18,7 @@ import cn.ylcto.student.vo.Student;
 
 public class StudentServiceTest {
 	
+	@Resource
 	private static IStudentService studentService;
 	private static ApplicationContext cxt;
 	
@@ -45,10 +48,12 @@ public class StudentServiceTest {
 	
 	@Test
 	public void testStudentSpilt()throws Exception{
-		Map<String, Object> map = this.studentService.listSpilt(1, 2);
+		Map<String, Object> map = this.studentService.listSpilt(1, 3);
+	
 		System.out.println(map.get("allStudent"));
 		System.out.println(map.get("studentCount"));
 		TestCase.assertTrue(map.size()==2);
+		
 	} 
 	
 	@Test

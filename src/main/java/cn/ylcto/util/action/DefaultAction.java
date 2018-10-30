@@ -142,7 +142,6 @@ public abstract class DefaultAction {
 		try {
 			response.getWriter().print(ObjectToJson.converterListSpiltObjectToJson(name,all,allResources));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

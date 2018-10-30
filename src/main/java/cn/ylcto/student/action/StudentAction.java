@@ -38,14 +38,15 @@ public class StudentAction extends DefaultAction {
         }
         return mav;
     }
-
-    @RequestMapping(value = "student_list")
+    
+     @RequestMapping(value = "student_list")
     public void list(HttpServletRequest request, HttpServletResponse response){
         super.handleList(request, response);
         try {
             Map<String,Object> map = this.studentService.listSpilt(super.getCurrentPage(),super.getLineSize());
             List<Student> all = (List<Student>) map.get("allStudent");
             Integer allRecorders = (Integer) map.get("studentCount");
+           
             super.printListSpiltObjectToJson(response,"allStudent",all,allRecorders);
         } catch (Exception e) {
             e.printStackTrace();

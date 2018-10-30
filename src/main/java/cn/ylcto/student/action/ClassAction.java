@@ -1,5 +1,7 @@
 package cn.ylcto.student.action;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 
@@ -34,6 +36,7 @@ public class ClassAction extends DefaultAction{
 	public void list(HttpServletResponse response) {
 		
 		try {
+			List<Classes> classes=this.classesService.list();
 			super.printListObjectToJson(response, "allClasses", this.classesService.list());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

@@ -8,7 +8,7 @@
 <html>
 <head>
     <base href="<%=basePath%>">
-    <title>优乐在线教育图书管理系统</title>
+    <title>在线教育图书管理系统</title>
 </head>
 <body>
 <jsp:include page="/pages/header.jsp"/>
@@ -26,7 +26,7 @@
                 <th class="text-center">操作</th>
             </tr>
         </table>
-        
+        <button class="btn btn-danger btn-sm" id="deleteBtn">批量删除</button>
         <div class="text-right">
             <ul class="pagination pagination-sm" id="pagecontrol"></ul>
         </div>
@@ -56,7 +56,10 @@
                       <div class="form-group">
                           <label class="control-label col-md-3">班级编号</label>
                           <div class="col-md-5">
-                              <select name="classes.cid" id="classes" class="form-control"></select>
+                              <select name="cid" id="cid" onclick="loadClasses()"
+                              class="form-control">
+                              
+                              </select>
                           </div>
                       </div>
 
@@ -108,5 +111,6 @@
 <script src="jquery/Message_zh_CN.js"></script>
 <script src="jquery/util.js"></script>
 <script src="jquery/student_list.js"></script>
+
 </body>
 </html>
