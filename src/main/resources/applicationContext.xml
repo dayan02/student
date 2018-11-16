@@ -61,12 +61,14 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="configLocation" value="classpath:mybatis.cfg.xml" />
 	</bean>
-
+<!-- 配置事物 -->
 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
+	<!-- 事物驱动 -->
 	<tx:annotation-driven transaction-manager="transactionManager" />
+
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<!-- 定义所有事务的传统属性，这些方法都属于服务层的操作方法 -->
 		<tx:attributes>

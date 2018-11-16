@@ -18,6 +18,7 @@ function addRow(cid,cname,note){
 			"<td>"+cname+"</td>"+
 			"<td>"+note+"</td>"+
 			"</tr>";
+	alert(str);
 			
 			$("#classesTable").append($(str));
 			
